@@ -1,0 +1,54 @@
+# aj-conf.yaml - Configuration for agent-jail (aj)
+
+network:
+  # Outbound domains, wildcards (*.domain.com), or specific host:port endpoints
+  allowed_domains:
+    - github.com
+    - "*.github.com"
+    - githubusercontent.com
+    - "*.githubusercontent.com"
+    - pypi.org
+    - "*.pypi.org"
+    - pythonhosted.org
+    - "*.pythonhosted.org"
+    - huggingface.co
+    - "*.huggingface.co"
+    - registry.npmjs.org
+    # Cloud LLM APIs (uncomment as needed):
+    # - api.openai.com
+    # - api.anthropic.com
+    # - generativelanguage.googleapis.com
+    # - openrouter.ai
+    # Local LLM servers (standard ports):
+    # - 127.0.0.1:11434  # Ollama
+    # - 127.0.0.1:8080   # llama.cpp (llama-server)
+    # - 127.0.0.1:4000   # LiteLLM Proxy
+    # - 127.0.0.1:1234   # LM Studio
+    # - 127.0.0.1:8000   # vLLM / Local FastAPI
+
+filesystem:
+  # Directories permitted for read access.
+  # Default: ["."] grants read access to the entire project directory.
+  # Restrict to specific subfolders (e.g. ["src", ".venv"]) for granular reads.
+  read:
+    - .
+
+  # Specific files or directories to hide completely (deny read).
+  # Useful when read: ["."] is enabled but you want to protect secrets.
+  hide:
+    # - .env
+    # - secrets
+
+  # Directories to permit write access.
+  # Default: ["."] grants write access to the project directory.
+  # Restrict to specific subfolders (e.g. ["output", ".cache"]) for granular access,
+  # or leave empty ([]) to make the entire project strictly read-only.
+  write:
+    - .
+
+env:
+  # Host environment variables to pass into the sandbox
+  passthrough:
+    # - OPENAI_API_KEY
+    # - ANTHROPIC_API_KEY
+    # - GEMINI_API_KEY
