@@ -33,12 +33,18 @@
   (literal  (string-append (param "HOME") "/.pi/agent/settings.json"))
   (literal  (string-append (param "HOME") "/.pi/agent/models.json"))
   (literal  (string-append (param "HOME") "/.pi/agent/auth.json"))
+  (literal  (string-append (param "HOME") "/.pi/agent/trust.json"))
+  (literal  (string-append (param "HOME") "/.pi/agent/allowed_domains.default"))
   ;; Developer delayed-jailbreak traps inside $PROJECT
   (subpath  (string-append (param "PROJECT") "/.git/hooks"))
   (literal  (string-append (param "PROJECT") "/.git/config"))
   (literal  (string-append (param "PROJECT") "/.envrc"))
   (literal  (string-append (param "PROJECT") "/.mcp.json"))
   (subpath  (string-append (param "PROJECT") "/.vscode"))
+  ;; Agent instruction persistence traps inside $PROJECT
+  (literal  (string-append (param "PROJECT") "/AGENTS.md"))
+  (literal  (string-append (param "PROJECT") "/CLAUDE.md"))
+  (literal  (string-append (param "PROJECT") "/.cursorrules"))
   ;; Config anti-tampering
   (literal  (string-append (param "PROJECT") "/aj-conf.yaml"))
   (literal  (string-append (param "PROJECT") "/aj-conf.yml"))

@@ -40,11 +40,14 @@ Environment:
 
 def set_resource_limits() -> None:
     """Set process and file descriptor caps to prevent fork bombs and descriptor leaks."""
-    try:
-        if hasattr(resource, "RLIMIT_NPROC"):
-            resource.setrlimit(resource.RLIMIT_NPROC, (512, 512))
-    except Exception:
-        pass
+    # On macOS, RLIMIT_NPROC is enforced per-UID across the whole user session
+    # rather than per-process, which causes EAGAIN if the user already has >512 processes.
+    if sys.platform != "darwin":
+        try:
+            if hasattr(resource, "RLIMIT_NPROC"):
+                resource.setrlimit(resource.RLIMIT_NPROC, (512, 512))
+        except Exception:
+            pass
 
     try:
         if hasattr(resource, "RLIMIT_NOFILE"):

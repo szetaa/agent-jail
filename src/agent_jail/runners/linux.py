@@ -135,6 +135,9 @@ class LinuxRunner(BaseRunner):
             ".envrc",
             ".mcp.json",
             ".vscode",
+            "AGENTS.md",
+            "CLAUDE.md",
+            ".cursorrules",
             "aj-conf.yaml",
             "aj-conf.yml",
             "aj-conf.toml",
@@ -163,7 +166,7 @@ class LinuxRunner(BaseRunner):
                 sub_path = pi_agent / sub
                 if sub_path.is_dir():
                     bwrap_args.extend(["--ro-bind", str(sub_path), str(sub_path)])
-            for cfg in ["settings.json", "models.json", "auth.json"]:
+            for cfg in ["settings.json", "models.json", "auth.json", "trust.json", "allowed_domains.default"]:
                 cfg_path = pi_agent / cfg
                 if cfg_path.is_file():
                     bwrap_args.extend(["--ro-bind", str(cfg_path), str(cfg_path)])
