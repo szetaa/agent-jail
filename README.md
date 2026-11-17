@@ -3,6 +3,7 @@
 > **Kernel-enforced OS sandboxing for autonomous AI agents — with zero overhead.**  
 > One universal YAML policy (`aj-conf.yaml`) to confine any agent harness (`claude`, `codex`, `gemini`, `pi`, `aider`) or custom Python loop (LangChain, DeepAgents, Agno, CrewAI) strictly to your project folder with sub-millisecond startup.
 
+[![PyPI version](https://img.shields.io/pypi/v/agent-jail-cli.svg)](https://pypi.org/project/agent-jail-cli/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Overhead: <1ms](https://img.shields.io/badge/overhead-%3C1ms-success.svg)](#how-it-works-the-4-defense-perimeters)
@@ -29,13 +30,17 @@ If you build or run autonomous agents, you give LLMs a bash tool or a Python int
 Install once globally (works on macOS and Ubuntu/Debian):
 
 ```bash
-# Install directly from GitHub
+# Install from PyPI (recommended)
+uv tool install agent-jail-cli
+
+# Or run ephemerally without installing
+uvx --from agent-jail-cli aj
+
+# Update to latest version
+uv tool upgrade agent-jail-cli
+
+# Or install directly from GitHub / local checkout
 uv tool install git+https://github.com/szetaa/agent-jail.git
-
-# Update to latest version from GitHub
-uv tool upgrade agent-jail
-
-# Or install from a local checkout (for development)
 uv tool install --force .
 ```
 
@@ -219,7 +224,7 @@ git push origin main
 git checkout ongoing
 
 # 3. Update your local machine
-uv tool upgrade agent-jail
+uv tool upgrade agent-jail-cli
 ```
 
 ---

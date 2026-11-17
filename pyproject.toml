@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "agent-jail"
+name = "agent-jail-cli"
 version = "0.1.6"
 description = "Zero-overhead, OS-level sandboxing for autonomous AI agents on macOS and Linux"
 readme = "README.md"
